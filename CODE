@@ -4,7 +4,7 @@ Created on Sat Oct 12 13:52:42 2024
 
 @author: KALVO
 """
-
+pip install random-word
 from random_word import RandomWords
 
 def wordlee():
