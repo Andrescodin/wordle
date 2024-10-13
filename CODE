@@ -1,1 +1,45 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Oct 12 13:52:42 2024
 
+@author: KALVO
+"""
+
+from random_word import RandomWords
+
+def wordlee():
+    GREEN = "\033[32m"
+    YELLOW = "\033[33m"
+    RESET = "\033[0m"
+    print("The rules of the game are simple you write a word of x characters then you press enter if the leter appeaars in green you guesed the position and the leter if its yellow you guesed the leter and if it is grey/withe the position and letter is wrong ")
+    r = RandomWords()
+    palabraR=r.get_random_word()
+    oport=7
+    lista = [0] * len(palabraR)
+    while oport>0:
+        oport-=1
+        palabra=input(f"The word has {len(palabraR)} letters: ")
+        while len(palabra)!=len(palabraR):
+            palabra=input(f"The word has {len(palabraR)} letters: ")
+        palt=list(palabraR)
+        for i in range(len(palabra)):
+            if palabra[i] in palt:
+                if palabra[i]==palt[i]:
+                    lista[i]=f"{GREEN}{palabra[i]}{RESET}"
+                    palt[i]=0
+                else:
+                    lista[i]=f"{YELLOW}{palabra[i]}{RESET}"
+                    indice = palt.index(palabra[i])  
+                    palt[indice] = 0  # Reemplazar el valor por 0
+
+            else:
+                lista[i]=f"{palabra[i]}"
+        print(" ".join(map(str, lista)))
+        if palabra==palabraR:
+            return("GG")
+    return(palabraR)
+    
+# Crear una instancia de RandomWords
+
+    print(palabraR)
+wordlee()
